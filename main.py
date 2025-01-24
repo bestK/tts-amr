@@ -22,13 +22,14 @@ async def text_to_speech(
     try:
         # 准备请求数据
         url = "https://www.text-to-speech.cn/getSpeek.php"
+        random_ip = f"{random.randint(1,255)}.{random.randint(1,255)}.{random.randint(1,255)}.{random.randint(1,255)}"
         headers = {
             "authority": "www.text-to-speech.cn",
             "pragma": "no-cache",
             "x-requested-with": "XMLHttpRequest",
             "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
-            "X-Forwarded-For": f"{random.randint(1,255)}.{random.randint(1,255)}.{random.randint(1,255)}.{random.randint(1,255)}",
-            "X-Real-IP": f"{random.randint(1,255)}.{random.randint(1,255)}.{random.randint(1,255)}.{random.randint(1,255)}",
+            "X-Forwarded-For": random_ip,
+            "X-Real-IP": random_ip,
         }
         data = {
             "language": "中文（普通话，简体）",
