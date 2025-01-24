@@ -3,6 +3,7 @@ from fastapi import FastAPI, HTTPException
 import requests
 import base64
 from pydub import AudioSegment
+import random
 
 app = FastAPI()
 
@@ -26,6 +27,8 @@ async def text_to_speech(
             "pragma": "no-cache",
             "x-requested-with": "XMLHttpRequest",
             "content-type": "application/x-www-form-urlencoded; charset=UTF-8",
+            "X-Forwarded-For": f"{random.randint(1,255)}.{random.randint(1,255)}.{random.randint(1,255)}.{random.randint(1,255)}",
+            "X-Real-IP": f"{random.randint(1,255)}.{random.randint(1,255)}.{random.randint(1,255)}.{random.randint(1,255)}",
         }
         data = {
             "language": "中文（普通话，简体）",
